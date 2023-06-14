@@ -5,37 +5,37 @@
 
 
 {% if request.user.is_authenticated %}
-  {% if request.user.is_student%}
+{% if request.user.is_student%}
 {% include "student_header.html" %}
 
   <div class="container-fluid">
-          <div class="row">
+          <div class="row my-3">
             <div class="col d-flex justify-content-end">
-              <div class="align-self-center mx-3">Change your avatar</div>
+              <div class="align-self-center mx-3 text-danger">Change your profile</div>
               <a href="{% url 'avatar_change' %}">{% avatar user 65 class="rounded-circle" id="user_avatar" %}
               </a>
             </div>
           </div>
 
             <div class="row ">
-              <div class="col d-flex justify-content-lg-end justify-content-md-end">
+              <div class="col d-flex justify-content-lg-end justify-content-md-end my-2">
                 {% avatar user 65 class="rounded-circle" id="user_avatar" %}
               </div>
-              <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div class="pt-3 pb-2 mb-3 border-bottom">
-                  <h1 class="h2">{{ request.user.first_name }} </h1>
-                  <h6>Logged as a student</h6>
+            
+              <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 ">
+                <div class="pt-3 pb-2 mb-3 border-bottom ">
+                  <h1 class="h3 text-info text-uppercase">{{ request.user.first_name }} {{request.user.last_name}} </h1>
+                  <p class="text-small text-success">Logged as a student</p>
                 </div>
 
                 <div class="card mx-5 shadow-lg">
                   <div class="card-body ">
                     <div class="bg-light rounded-lg p-3 ">
-                            <h1 class="display-4">Welcome {{ request.user.first_name }}</h1>
-                            <p class="lead">View the attendance status for each of your courses. The attendance of each course is
-                              also displayed as list of classes that were conducted.</p>
-                            <hr class="my-4">
+                            <h1 class="display-4 fw-1200 f">Good to see you again &#128516; {{ request.user.first_name }}</h1>
+                            <p class="lead text-darks ">View the attendance status for each of your courses.</p>
+                            <hr class="my-4 border-warning py-3">
                             
-                            <a class="btn btn-primary btn-lg" role="button" href="{% url 'student_attendance_url' request.user.student.USN %}"> View Attendance</a>
+                            <a class="btn btn-outline-info btn-lg" role="button" href="{% url 'student_attendance_url' request.user.student.USN %}"> View Attendance</a>
                         
                           </div>
                         </div>
