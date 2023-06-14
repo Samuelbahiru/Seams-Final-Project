@@ -29,12 +29,12 @@ class UserAdminConfig(UserAdmin):
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
         ('Personal Info', {'fields': ('first_name', 'last_name')}),
-        ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser','is_teacher', 'is_student')})
+        ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser','is_teacher', 'is_student','approved')})
     )
     add_fieldsets = (
         (None, {
             'classes':('wide',),
-            'fields':('email', 'first_name', 'last_name', 'password1', 'password2', 'is_active', 'is_staff', 'is_teacher','is_student', 'is_superuser')
+            'fields':('email', 'first_name', 'last_name', 'password1', 'password2', 'is_active', 'is_staff', 'is_teacher','is_student', 'is_superuser','approved')
             }
         ),
     )
