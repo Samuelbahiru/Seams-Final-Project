@@ -1,12 +1,12 @@
 {% load static %}
 
 <body class="bg-light">
-  <header id="header-section">
+  <header id="header-section" style="margin-top: -40px ;">
    
     <nav class="navbar navbar-expand-lg pl-3 pl-sm-0" id="navbar">
         <div class="container">
-          <div class="navbar-brand-wrapper d-flex mx-5">
-            <img src="{% static 'images/Group2.svg' %}" alt="">
+          <div class="navbar-brand-wrapper d-flex mx-3 my-0" >
+            <img class="img-responsive h-25 rounded-circle " style="width: 160px;" src="{% static 'images/logo.png' %}" alt="">
             <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="mdi mdi-menu navbar-toggler-icon"></span>
             </button> 
@@ -14,7 +14,7 @@
           <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse mx-5" id="navbarNavDropdown">
+          <div class="collapse navbar-collapse mx-5" id="navbarNavDropdown" >
             <ul class="navbar-nav d-flex">
               <li class="nav-item mx-1">
                 <a class="active nav-link fw-bold text-danger " aria-current="page" href="{% url 'student_home_url' %}">Home</a>

@@ -12,21 +12,21 @@
     </head>
   
     <body >
-    <header>
+    <header style="margin-top: -40px;" >
         <nav class="navbar navbar-expand-lg pl-3 pl-sm-0" id="navbar">
             <div class="container">
             <div class="collapse navbar-collapse navbar-menu-wrapper" id="navbarSupportedContent">
-                <ul class="navbar-nav align-items-lg-center align-items-start ml-auto">
-                <li class="mx-5 d-flex align-items-center justify-content-between pl-4 pl-lg-0 m-3">
+                <ul class="navbar-nav align-items-lg-center align-items-start ">
+                <li class=" d-flex align-items-center justify-content-between pl-4 pl-lg-0 m-3">
                     <div class="navbar-collapse-logo">
-                    <img src="{% static 'images/Group2.svg' %}" alt="">
+                        <img class="img-responsive h-25 rounded-circle " style="width: 170px;" src="{% static 'images/logo2.png' %}" alt="">
                     </div>
                     <button class="navbar-toggler close-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="mdi mdi-close navbar-toggler-icon pl-5"></span>
                     </button>
                 </li>
-                <li class="nav-item mx-2">
-                    <a class="nav-link font-weight-bolder" href="{% url 'home_url' %}">Home <span class="sr-only"></span></a>
+                <li class="nav-item ">
+                    <a class="nav-link btn btn-outline-warning font-weight-bolder" href="{% url 'home_url' %}">Home <span class="sr-only"></span></a>
                 </li>
                 <!-- <li class="nav-item btn-contact-us pl-4 pl-lg-0 mx-2">
                   
