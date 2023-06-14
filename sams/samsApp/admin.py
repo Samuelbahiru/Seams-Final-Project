@@ -84,7 +84,6 @@ class AssignAdmin(admin.ModelAdmin):
     list_display = ('class_id', 'course', 'teacher')
     search_fields = ('class_id__dept__name', 'class_id__id', 'course__name', 'teacher__name', 'course__shortname')
     ordering = ['class_id__dept__name', 'class_id__id', 'course__id']
-    raw_id_fields = ['class_id', 'course', 'teacher']
 
 
 
