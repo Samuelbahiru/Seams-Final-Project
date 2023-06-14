@@ -30,13 +30,13 @@ def login_view(request):
             return render(request, 'login_page.html')
         if user is not None:
             login(request, user)
-        if user.is_student:
-            return redirect('student_home_url')
-        elif user.is_teacher:
-            return redirect('teacher_home_url')
-        elif user.superuser:
-            return redirect('admin_home_url')
-
+        if user.approved:
+            if user.is_student:
+                return redirect('student_home_url')
+            elif user.is_teacher:
+                return redirect('teacher_home_url')
+        else:
+            messages.warning(request,'Your account has not been approved by admin.')
     return render(request, 'login_page.html')
 
 def logoutview(request):
