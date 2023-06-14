@@ -10,6 +10,13 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 # Create your views here.
+
+def home_view(request):
+    return render(request, 'index.html')
+
+
+
+
 def login_view(request): 
     if request.method == 'POST':
         email = request.POST['email']
@@ -50,7 +57,7 @@ def register_view(request):
                 user = form.cleaned_data.get('username')
                 messages.success(request, 'Account was created for ' + str(user) )
                 return redirect('login_url')
-        context = {'form':form}
+        context = {'form':form, 'message': messages}
     return render(request, 'registration.html', context)
 
 
