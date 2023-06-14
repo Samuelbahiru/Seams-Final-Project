@@ -21,9 +21,16 @@ def login_view(request):
     if request.method == 'POST':
         email = request.POST['email']
         passwd = request.POST['password']
-        if not (email and passwd):
-            messages.error(request, 'Please provide all the details!!')
+        if not email:
+            messages.error(request, 'email is missing!')
             return render(request, 'login_page.html')
+        if not passwd:
+            messages.error(request, 'password is missing!')
+            return render(request, 'login_page.html')
+        if not (email and passwd):
+            messages.error(request, 'you should provide the details of you credential!')
+            return render(request, 'login_page.html')
+
         user = authenticate(request, email=email, password=passwd)
         if not user:
             messages.error(request, 'Invalid Login Credentials!!')

@@ -1,35 +1,50 @@
 {% extends 'logBase.html' %}
 {% load static %}
 {% block content%}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-5 m-2">
+            <img src="{% static 'images/Group171.svg' %}" alt="" class="img-fluid ">
+
+        </div>
+        <div class="col-sm-6 mx-4">
             <div class="card shadow-lg border-0 rounded-lg mt-5">
 
-                        <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
-                        <div class="card-body">
-                            <form method="POST" action="">
-                                {% csrf_token %}
-                               <div class="form-floating mb-3">
-                                    <input name="email" class="form-control" id="inputUsername" type="text" placeholder="Email Address" />
-                                    <label for="inputUsername">Email Address</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input name="password" class="form-control" id="inputPassword" type="password" placeholder="Password" />
-                                    <label for="inputPassword">Password</label>
-                                </div> 
-                                <div class="mt-4 mb-0 text-center">
-                                    <input type="submit" class="btn btn-primary" value="Login">
-                                </div>
-                            </form>
+                <div class="card-header bg-info text-white"><h3 class="text-center font-weight-light my-4">Login</h3></div>
+                <div class="card-body">
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                       <div class=" mb-3 d-flex">
+                            <label for="inputUsername" class="mx-4 fw-bold">Email</label>
+                            <input name="email" class="form-control mx-3" id="inputUsername" type="text" placeholder="example@gmail.com" />
+                          
                         </div>
-                        {% if messages %}
-                        <div class="card-footer text-muted">
-                            {% for message in messages %}
-                            <p>{{message}}</p>
-                            {% endfor %}
+                        <div class=" mb-3 d-flex">
+                            <label for="inputPassword" class="mx-2 fw-bold">Password</label>
+                            <input name="password" class="form-control mx-3" id="inputPassword" type="password" placeholder="password" />
+                            
+                        </div> 
+                        <div class="mt-4 mb-0 text-center">
+                            <input type="submit" class="btn btn-outline-warning text-dark" value="Login">
                         </div>
-                        {% endif %}
+                    </form>
+                </div>
+                {% if messages %}
+                <div class="card-footer text-muted">
+                    {% for message in messages %}
+                    <p class="text-danger" >{{message}}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+    
+                <div div class="card-footer text-center py-3">
+                    <a class="btn btn-outline-info text-dark"  href={% url 'reset_password' %}>Forget password?</a>
+                </div>
+    </div>
+        </div>
+      
+    </div>
+</div>
+
            
-                        <div div class="card-footer text-center py-3">
-                            <a class="btn btn-outline-primary"  href={% url 'reset_password' %}>Forget password?</a>
-                        </div>
-            </div>
 {% endblock content%}
