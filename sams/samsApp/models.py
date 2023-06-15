@@ -146,7 +146,7 @@ class Assign(models.Model):
         cl = Class.objects.get(id=self.class_id_id)
         cr = Course.objects.get(id=self.course_id)
         te = Teacher.objects.get(id=self.teacher_id)
-        return '%s : %s : %s' % (te.name, cr.shortname, cl)
+        return '%s : %s : %s' % (te.user.first_name, cr.shortname, cl)
 
 
 class AssignTime(models.Model):
@@ -175,7 +175,7 @@ class Attendance(models.Model):
     def __str__(self):
         sname = Student.objects.get(name=self.student)
         cname = Course.objects.get(name=self.course)
-        return '%s : %s' % (sname.name, cname.shortname)
+        return '%s : %s' % (sname.user.first_name, cname.shortname)
 
 
 class AttendanceTotal(models.Model):

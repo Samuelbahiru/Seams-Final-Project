@@ -84,7 +84,6 @@ class AssignAdmin(admin.ModelAdmin):
     list_display = ('class_id', 'course', 'teacher')
     search_fields = ('class_id__dept__name', 'class_id__id', 'course__name', 'teacher__name', 'course__shortname')
     ordering = ['class_id__dept__name', 'class_id__id', 'course__id']
-    raw_id_fields = ['class_id', 'course', 'teacher']
 
 
 
@@ -108,6 +107,7 @@ class StudentAdmin(admin.ModelAdmin):
     search_fields = ('USN', 'class_id__id', 'class_id__dept__name')
     ordering = ['class_id__dept__name', 'class_id__id', 'USN']
 
+# class AttendanceRangeAdmin(admin.ModelAdmin):
 
 
 admin.site.register(User, UserAdminConfig)
@@ -119,4 +119,4 @@ admin.site.register(Teacher)
 admin.site.register(Assign, AssignAdmin)
 admin.site.register(NotificationTeacher)
 admin.site.register(NotificationStudent)
-
+admin.site.register(AttendanceRange)
