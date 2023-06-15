@@ -33,19 +33,19 @@
               <div class="card-body">
                 {% for noteTeacher in note %}
                 <div class="card col-5">
-                  <h5 class="card-header">Notification- {{noteTeacher.id}}</h5>
+                  <h5 class=" h6 card-header bg-warning text-dark text-center ">Notification- {{noteTeacher.id}}</h5>
                   <div class="card-body">
                     <p>
-                      message - {{noteTeacher.message}}
+                      <span class="text-dark fw-bold" >message -</span> {{noteTeacher.message}}
                     </p>
-                    <p>
+                    <!-- <p>
                       To - {{noteTeacher.teacher_id}}
-                    </p>
+                    </p> -->
                   </div>
                   
                   <div class="card-footer text-muted">
-                    <div>Created At - {{noteTeacher.created_at}}</div>
-                    <div>Updated At - {{noteTeacher.updated_at}}</div>
+                    <div><span class="fw-bold">Created At - </span> {{noteTeacher.created_at}}</div>
+                    <div><span class="fw-bold">Updated At - </span> {{noteTeacher.updated_at}}</div>
                   </div>
                                    
                 </div>

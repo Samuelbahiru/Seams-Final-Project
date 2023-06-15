@@ -46,8 +46,8 @@
                                 <td>{{ ass.class_id }}</td>
                                 <td>{{ ass.course }}</td>
                                 <td>
-                                  <a class="btn btn-sm btn-outline-primary" href="{% url 't_class_date_url' ass.id %}" role="button">Enter Attendance</a>
-                                  <a class="btn btn-sm btn-outline-secondary" href="{% url 't_student_url' ass.id %}">View Students</a>
+                                  <a class="btn btn-sm btn-outline-info fw-bold" href="{% url 't_class_date_url' ass.id %}" role="button">Enter Attendance</a>
+                                  <a class="btn btn-sm btn-outline-warning fw-bold" href="{% url 't_student_url' ass.id %}">View Students</a>
                                 </td>
                             </tr>
                             {% empty %}

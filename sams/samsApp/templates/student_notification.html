@@ -26,26 +26,26 @@
         <div class="col-12">
           <div class="card shadow-lg">
             <div class="card-header bg-info">
-              <h3 class=" h4 text-light text-center fw-bold">
+              <h3 class=" h5 text-light text-center fw-bold">
                 Notification</h3>
             </div>
         
               <div class="card-body">
                 {% for note in studentNote %}
                 <div class="card col-5">
-                  <h5 class="card-header">Notification- {{note.id}}</h5>
+                  <h5 class=" h6 card-header text-center bg-warning text-dark fw-bold">Notification- {{note.id}}</h5>
                   <div class="card-body">
                     <p>
-                      message - {{note.message}}
+                     <span class="fw-bold "> message - </span>  {{note.message}}
                     </p>
-                    <p>
-                      To - {{request.user.student.name}}
-                    </p>
+                    <!-- <p>
+                      To - {{request.user.name}}
+                    </p> -->
                   </div>
                   
                   <div class="card-footer text-muted">
-                    <div>Created At - {{noteTeacher.created_at}}</div>
-                    <div>Updated At - {{noteTeacher.updated_at}}</div>
+                    <div>  <span class="fw-bold "> Created At -  </span>{{noteTeacher.created_at}}</div>
+                    <div>  <span class="fw-bold "> Updated At - </span> {{noteTeacher.updated_at}}</div>
                   </div>
                                    
                 </div>

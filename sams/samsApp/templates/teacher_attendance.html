@@ -25,7 +25,7 @@
 
         <div class="col">
             <div class="card shadow-lg text-center">
-                <div class="card-header">
+                <div class="card-header bg-info fw-bold text-light h5 ">
                   Attendace Table
                 </div>
                 <div class="card-body">
@@ -37,7 +37,7 @@
                              <div class="card-body">
                             <div class="table-responsive">
                               <table class="table table-hover">
-                                <thead>
+                                <thead >
                                   <tr>
                                       <th>Student name</th>
                                       <th></th>
@@ -46,15 +46,15 @@
                                   <tbody>
                                   {% for s in c.student_set.all %}
                                       <tr>
-                                      <td>{{s.name}}</td>
+                                      <td class="text-capitalize">{{s.user.first_name}} {{s.user.last_name}}</td>
                                       <td>
                                           <div class="btn-group btn-group-toggle" data-toggle="buttons">
                   
-                                                  <label class="btn btn-sm btn-outline-success">
+                                                  <label class="btn btn-sm btn-outline-info text-dark fw-bold mx-2">
                                                       <input type="radio" name="{{ s.USN }}"   value="present" checked> Present
                                                   </label>
                   
-                                                  <label class="btn btn-sm btn-outline-danger">
+                                                  <label class="btn btn-sm btn-outline-warning text-dark fw-bold">
                                                       <input type="radio" name="{{ s.USN }}" value="absent"> Absent
                                                   </label>
                                           </div>
@@ -68,7 +68,8 @@
                         </div>
                   
                   
-                      <input class="btn btn-success" type="submit" value="Submit">
+                      <input class="btn btn-info text-dark fw-bold my-4" type="submit" value="Submit">
+                    
                   </form>
                   
                   
@@ -76,7 +77,9 @@
                       <p>No students in Class</p>
                   {% endif %} 
                 </div>
+                
             </div>
+          
         </div>
 
         

@@ -22,7 +22,7 @@
         <div class="col">
             <div class="card text-center shadow-lg">
                 <div class="card-header bg-info text-light fw-bold">
-                  <h3 class="h4">Attendance Summary</h3>
+                  <h3 class="h5">Attendance Summary</h3>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -46,9 +46,9 @@
                               <td>{{ a.att_class }}</td>
                               <td>{{ a.total_class }}</td>
                               {% if a.attendance < 75 %}
-                                  <td class="p-3 mb-2 bg-danger text-white">{{ a.attendance }}</td>
-                              {% else %}
-                                  <td class="p-3 mb-2 bg-success text-white">{{ a.attendance }}</td>
+                                  <td class="p-3 mb-2 btn bg-danger border rounded-circle text-light fw-bold">{{ a.attendance }} %</td>
+                              {% else %} 
+                                  <td class="p-3 mb-2 btn bg-info border rounded-circle text-light fw-bold">{{ a.attendance }} %</td>
                               {% endif %}
                               <td>{{ a.classes_to_attend }}</td>
                           </tr>

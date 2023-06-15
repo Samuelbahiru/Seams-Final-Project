@@ -16,7 +16,7 @@
 
   <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class=" align-items-center pt-3 pb-2 mb-3 border-bottom">
-      <h1 class="h2">{{ request.user.teacher.name }}</h1>
+      <h1 class="h4 fw-bold text-info">{{ request.user.first_name }} {{ request.user.last_name }}</h1>
     </div>
 
 
@@ -25,8 +25,9 @@
 
           <div class="col-12">
             <div class="card shadow-lg text-center">
-              <div class="card-header">
-                Classes in the Semister
+              <div class="card-header bg-info">
+                <h3 class="h5 text-light text-uppercase">Classes in the Semister</h3>
+                
               </div>
                 <div class="card-body">
                   <div class="table-responsive">
@@ -43,18 +44,18 @@
                         <tr>
                             <td>{{ a.date }}</td>
                             {% if a.status == 0 %}
-                                <td class="p-3 mb-2 bg-danger text-white">Not Marked</td>
+                                <td class="p-3 mb-2 text-dark" style="background-color: rgb(223, 186, 137);">Not Marked</td>
                                 <td>
-                                    <a class="btn btn-sm btn-outline-primary" href="{% url 't_attendance_url' a.id %}" role="button">Enter Attendance</a>
+                                    <a class="btn btn-sm btn-outline-info text-dark fw-bold" href="{% url 't_attendance_url' a.id %}" role="button">Enter Attendance</a>
                                 </td>
       
                             {% elif a.status == 1 %}
-                                <td class="p-3 mb-2 bg-success text-white">Marked</td>
-                                <td><a class="btn btn-sm btn-outline-secondary" href="{% url 'edit_att_url' a.id %}" role="button">Edit Attendance</a> </td>
+                                <td class="p-3 mb-2 bg-info text-white">Marked</td>
+                                <td><a class="btn btn-sm btn-outline-warning text-dark fw-bold" href="{% url 'edit_att_url' a.id %}" role="button">Edit Attendance</a> </td>
       
                             {% else %}
                                 <td class="p-3 mb-2 bg-warning text-white">Cancelled</td>
-                                <td><a class="btn btn-sm btn-outline-primary" href="{% url 't_attendance_url' a.id %}" role="button">Enter Attendance</a></td>
+                                <td><a class="btn btn-sm btn-outline-info text-dark fw-bold" href="{% url 't_attendance_url' a.id %}" role="button">Enter Attendance</a></td>
                             {% endif %}
                         </tr>
                         {% empty %}

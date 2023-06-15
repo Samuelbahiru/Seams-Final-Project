@@ -43,13 +43,13 @@
                       {% for a in att_list %}
                       <tr>
                           <th>{{ a.student_id }}</th>
-                          <td>{{ a.student.name }}</td>        
+                          <td>{{ a.student.user.first_name }} {{ a.student.user.last_name }}</td>        
                           <td>{{ a.att_class }}</td>
                           <td>{{ a.total_class }}</td>
                           {% if a.attendance < 75 %}
-                              <td class="p-3 mb-2 bg-danger text-white">{{ a.attendance }}</td>
+                              <td class="p-3 mb-2 bbtn bg-danger border rounded-circle text-light fw-bold">{{ a.attendance }} %</td>
                           {% else %}
-                              <td class="p-3 mb-2 bg-success text-white">{{ a.attendance }}</td>
+                              <td class="p-3 mb-2 btn bg-info border rounded-circle text-light fw-bold">{{ a.attendance }}v%</td>
                           {% endif %}
                           <td>{{ a.classes_to_attend }}</td>
                       </tr>

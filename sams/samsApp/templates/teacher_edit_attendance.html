@@ -16,7 +16,7 @@
 
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
   <div class="align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">{{ request.user.teacher.name }}</h1>
+    <h1 class="h5 text-info text-capitalize fw-bold">{{ request.user.first_name }} {{ request.user.last_name }}</h1>
   </div>
   <div class="container-fluid">
     <div class="row g-5">
@@ -30,7 +30,7 @@
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-hover">
-              <thead>
+              <thead class="bg-info text-light fw-bold">
                 <tr>
                     <th>Student name</th>
                     <th></th>
@@ -39,20 +39,20 @@
                 <tbody>
                     {% for att in att_list %}
                     <tr>
-                    <td>{{att.student.name}}</td>
+                    <td>{{att.student.user.first_name}} {{att.student.user.last_name}}</td>
                     <td>
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
 
                                 {% if att.status %}
-                                <label class="btn btn-sm btn-outline-success ">
+                                <label class="btn btn-sm btn-outline-info text-dark fw-bold mx-2">
                                     <input type="radio" name="{{ att.student.USN }}"   value="present" checked> Present
                                 </label>
 
-                                <label class="btn btn-sm btn-outline-danger">
+                                <label class="btn btn-sm btn-outline-warning text-dark fw-dark">
                                     <input type="radio" name="{{ att.student.USN }}"   value="absent"> Absent
                                 </label>
                                 {% else %}
-                                <label class="btn btn-sm btn-outline-success">
+                                <label class="btn btn-sm btn-outline-info text-dark fw-bold">
                                     <input type="radio" name="{{ att.student.USN }}"   value="present" > Present
                                 </label>
 
@@ -71,7 +71,7 @@
       </div>
 
 
-    <input class="btn btn-success" type="submit" value="Submit">
+    <input class="btn btn-outline-info text-dark fw-bold my-4" type="submit" value="Submit">
 </form>
         </div>
       </div>

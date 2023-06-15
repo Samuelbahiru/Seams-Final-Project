@@ -187,21 +187,21 @@ class AttendanceTotal(models.Model):
 
     @property
     def att_class(self):
-        stud = Student.objects.get(name=self.student)
+        stud = Student.objects.get(USN=self.student)
         cr = Course.objects.get(name=self.course)
         att_class = Attendance.objects.filter(course=cr, student=stud, status='True').count()
         return att_class
 
     @property
     def total_class(self):
-        stud = Student.objects.get(name=self.student)
+        stud = Student.objects.get(USN=self.student)
         cr = Course.objects.get(name=self.course)
         total_class = Attendance.objects.filter(course=cr, student=stud).count()
         return total_class
 
     @property
     def attendance(self):
-        stud = Student.objects.get(name=self.student)
+        stud = Student.objects.get(USN=self.student)
         cr = Course.objects.get(name=self.course)
         total_class = Attendance.objects.filter(course=cr, student=stud).count()
         att_class = Attendance.objects.filter(course=cr, student=stud, status='True').count()
@@ -213,7 +213,7 @@ class AttendanceTotal(models.Model):
 
     @property
     def classes_to_attend(self):
-        stud = Student.objects.get(name=self.student)
+        stud = Student.objects.get(USN=self.student)
         cr = Course.objects.get(name=self.course)
         total_class = Attendance.objects.filter(course=cr, student=stud).count()
         att_class = Attendance.objects.filter(course=cr, student=stud, status='True').count()

@@ -81,7 +81,7 @@ def student_attendance(request, stud_id):
     att_list = []
     for ass in ass_list:
         try:
-            a = AttendanceTotal.objects.get(student=stud, course=ass.course)
+            a = AttendanceTotal.objects.get(student=stud, course=ass.course )
         except AttendanceTotal.DoesNotExist:
             a = AttendanceTotal(student=stud, course=ass.course)
             a.save()
