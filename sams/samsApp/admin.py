@@ -107,6 +107,7 @@ class StudentAdmin(admin.ModelAdmin):
     search_fields = ('USN', 'class_id__id', 'class_id__dept__name')
     ordering = ['class_id__dept__name', 'class_id__id', 'USN']
 
+# class AttendanceRangeAdmin(admin.ModelAdmin):
 
 
 admin.site.register(User, UserAdminConfig)
@@ -118,4 +119,4 @@ admin.site.register(Teacher)
 admin.site.register(Assign, AssignAdmin)
 admin.site.register(NotificationTeacher)
 admin.site.register(NotificationStudent)
-
+admin.site.register(AttendanceRange)
