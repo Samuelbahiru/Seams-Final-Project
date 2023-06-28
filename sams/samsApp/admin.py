@@ -6,7 +6,7 @@ from django.contrib.auth.admin import UserAdmin
 from django.http import HttpResponseRedirect
 from django.urls import path
 
-from .models import Dept, Class, Student, Attendance, Course, Teacher, Assign, AssignTime, AttendanceClass, StudentCourse, User, AttendanceRange,  NotificationTeacher, NotificationStudent
+from .models import Dept, Class, Student, Attendance, Course, Teacher, Assign, AssignTime, AttendanceClass, StudentCourse, User, AttendanceRange,  TeacherNotification, AttendanceTotal
 
 
 # Register your models here.
@@ -38,6 +38,28 @@ class UserAdminConfig(UserAdmin):
             }
         ),
     )
+
+class TeacherNotificationAdmin(admin.ModelAdmin):
+    list_display = ('teacher', 'message', 'created_at', 'updated_at')
+    list_filter = ('created_at', 'updated_at')
+    search_fields = ('teacher__name', 'message')
+    list_editable = ('message',)
+    fields = ('teacher', 'message')
+admin.site.register(TeacherNotification, TeacherNotificationAdmin)
+
+class AttendanceTotalAdmin(admin.ModelAdmin):
+    list_display = ('id', 'course', 'student', 'attendance', 'classes_to_attend')
+    list_filter = ('course', 'student','student__batch')
+    search_fields = ['course__name']
+
+    def attendance(self, obj):
+        return obj.attendance
+
+    def classes_to_attend(self, obj):
+        return obj.classes_to_attend
+
+    attendance.short_description = 'Attendance (%)'
+    classes_to_attend.short_description = 'Classes to Attend'
 
 
 def daterange(start_date, end_date):
@@ -86,28 +108,11 @@ class AssignAdmin(admin.ModelAdmin):
     ordering = ['class_id__dept__name', 'class_id__id', 'course__id']
 
 
-
-# class StudentAdmin(admin.ModelAdmin):
-#     list_display = ('USN', 'user__name', 'class_id')
-#     search_fields = ('USN', 'user__name', 'class_id__id', 'class_id__dept__name')
-#     ordering = ['class_id__dept__name', 'class_id__id', 'USN']
-
-# class EmployeeAdmin(admin.ModelAdmin):
-#     list_display = ('id', 'user__name')
-#     search_fields = ('id', 'user__name')
-#     ordering = ['user__name','id']
-
-# class TeacherAdmin(admin.ModelAdmin):
-#     list_display = ('user__name', 'dept')
-#     search_fields = ('user__name', 'dept__name')
-#     ordering = ['dept__name', 'user__name']
-
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ('USN', 'class_id')
-    search_fields = ('USN', 'class_id__id', 'class_id__dept__name')
-    ordering = ['class_id__dept__name', 'class_id__id', 'USN']
+    list_display = ['USN', 'user', 'class_id', 'gender', 'date_of_birth', 'batch']
+    list_filter = ['class_id', 'gender', 'batch']
+    search_fields = ['USN', 'USN']
 
-# class AttendanceRangeAdmin(admin.ModelAdmin):
 
 
 admin.site.register(User, UserAdminConfig)
@@ -117,6 +122,5 @@ admin.site.register(Student, StudentAdmin)
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Teacher)
 admin.site.register(Assign, AssignAdmin)
-admin.site.register(NotificationTeacher)
-admin.site.register(NotificationStudent)
 admin.site.register(AttendanceRange)
+admin.site.register(AttendanceTotal, AttendanceTotalAdmin)

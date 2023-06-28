@@ -1,20 +1,36 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseRedirect
-from .models import User, Dept, Class, Student, Attendance, Course, Teacher, Assign, AttendanceTotal, time_slots, DAYS_OF_WEEK, AssignTime, AttendanceClass, StudentCourse, NotificationTeacher, NotificationStudent
+from .models import User, Dept, Class, Student, Attendance, Course, Teacher, Assign, AttendanceTotal, time_slots, DAYS_OF_WEEK, AssignTime, AttendanceClass, StudentCourse, TeacherNotification, StudentNotification
 from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
-# from .forms import TeacherCustomUserCreationForm,AdminCustomUserCreationForm, StudentCustomUserCreationForm, StudentForm, ClassForm, DeptForm, NotificationStudentForm,  NotificationTeacherForm, ClassForm, CourseForm 
 from .forms import CustomUserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-
+from django.dispatch import receiver
+from django.db.models.signals import post_save
+from django.contrib.auth import views as auth_views
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
 # Create your views here.
+
+class CustomPasswordResetView(auth_views.PasswordResetView):
+    template_name = 'registration/password_reset_form.html'
+    email_template_name = 'registration/password_reset_email.html'
+    subject_template_name = 'registration/password_reset_subject.txt'
+
+class CustomPasswordResetDoneView(auth_views.PasswordResetDoneView):
+    template_name = 'registration/password_reset_done.html'
+
+class CustomPasswordResetConfirmView(auth_views.PasswordResetConfirmView):
+    template_name = 'registration/password_reset_confirm.html'
+
+class CustomPasswordResetCompleteView(auth_views.PasswordResetCompleteView):
+    template_name = 'registration/password_reset_complete.html'
+
 
 def home_view(request):
     return render(request, 'index.html')
-
-
 
 
 def login_view(request): 
@@ -53,20 +69,32 @@ def logoutview(request):
 
 
 def register_view(request):
-    if request.user.is_authenticated:
-        return redirect('login_url')
-    else:
-        form = CustomUserCreationForm()
-        if request.method == 'POST':
-            form = CustomUserCreationForm(request.POST)
-            if form.is_valid():
-                form.save()
-                user = form.cleaned_data.get('username')
-                messages.success(request, 'Account was created for ' + str(user) )
-                return redirect('login_url')
-        context = {'form':form, 'message': messages}
+    form = CustomUserCreationForm()
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            user = form.cleaned_data.get('username')
+            messages.success(request, 'Account was created for')
+            return redirect('login_url')
+    context = {'form':form, 'message': messages}
     return render(request, 'registration.html', context)
 
+
+@login_required()
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user) 
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('home_url')  
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'change_password.html', {'form': form})
 
 # student view
 
@@ -98,8 +126,17 @@ def student_attendance_detail(request, stud_id, course_id):
 
 @login_required()
 def student_notification(request, student_id):
-    studentNote = NotificationStudent.objects.filter(student_id=student_id)
-    return render(request, 'student_notification.html', {'studentNote':studentNote})
+    stud = Student.objects.get(USN=student_id)
+    ass_list = Assign.objects.filter(class_id_id=stud.class_id)
+    att_list = []
+    for ass in ass_list:
+        try:
+            a = StudentNotification.objects.get(student=stud, course=ass.course )
+        except StudentNotification.DoesNotExist:
+            a = StudentNotification(student=stud, course=ass.course)
+            a.save()
+        att_list.append(a)
+    return render(request, 'student_notification.html', {'studentNote':att_list})
  
 
 
@@ -195,7 +232,7 @@ def confirm(request, ass_c_id):
 
 @login_required()
 def t_notification(request, teacher_id):
-    note = NotificationTeacher.objects.filter(teacher_id=teacher_id)
+    note = TeacherNotification.objects.filter(teacher_id=teacher_id)
     return render(request, 'teacher_notification.html', {'note':note})
     
 
