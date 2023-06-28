@@ -297,21 +297,21 @@ class NotificationTeacher(models.Model):
 
 class StudentNotification(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    # course = models.ForeignKey(Course, on_delete=models.CASCADE)
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    @property
-    def notify_students(self):
-        stud = Student.objects.get(USN=self.student)
-        cr = Course.objects.get(name=self.course)
-        total_class = Attendance.objects.filter(course=cr, student=stud).count()
-        att_class = Attendance.objects.filter(course=cr, student=stud, status='True').count()
-        attendance_percentage = (att_class / total_class) * 100
-        if attendance_percentage < 75:
-            message = f"Dear {self.student.user.first_name}, you have missed more than {25}% of the classes. Please ensure better attendance."
-        return message
+    # @property
+    # def notify_students(self):
+    #     stud = Student.objects.get(USN=self.student)
+    #     cr = Course.objects.get(name=self.course)
+    #     total_class = Attendance.objects.filter(course=cr, student=stud).count()
+    #     att_class = Attendance.objects.filter(course=cr, student=stud, status='True').count()
+    #     attendance_percentage = (att_class / total_class) * 100
+    #     if attendance_percentage < 75:
+    #         message = f"Dear {self.student.user.first_name}, you have missed more than {25}% of the classes. Please ensure better attendance."
+    #     return message
     
     def __str__(self):
         return str(self.student_id)
