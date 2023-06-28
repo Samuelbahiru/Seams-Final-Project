@@ -16,7 +16,7 @@
 
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
   <div class=" pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h5 text-info text-capitalize">{{ request.user.first_name }} {{ request.user.last_name }}</h1>
+    <h1 class="h2">{{ request.user.teacher.name }}</h1>
   
   </div>
 
@@ -25,27 +25,23 @@
     <div class="row g-5">
         <div class="col-12">
           <div class="card shadow-lg">
-            <div class="card-header bg-info">
-
-              <h3 class="h5 fw-bold text-light text-center">Notification</h3>
-            </div>
-              
+              <h5 class="card-header">Notification</h5>
               <div class="card-body">
-                {% for noteTeacher in note %}
+                {% for note in teacherNote %}
                 <div class="card col-5">
-                  <h5 class=" h6 card-header bg-warning text-dark text-center ">Notification- {{noteTeacher.id}}</h5>
+                  <h5 class="card-header">Notification- {{note.id}}</h5>
                   <div class="card-body">
                     <p>
-                      <span class="text-dark fw-bold" >message -</span> {{noteTeacher.message}}
+                      message - {{note.message}}
                     </p>
-                    <!-- <p>
-                      To - {{noteTeacher.teacher_id}}
-                    </p> -->
+                    <p>
+                      To - {{request.user.first_name}}
+                    </p>
                   </div>
                   
                   <div class="card-footer text-muted">
-                    <div><span class="fw-bold">Created At - </span> {{noteTeacher.created_at}}</div>
-                    <div><span class="fw-bold">Updated At - </span> {{noteTeacher.updated_at}}</div>
+                    <div>Created At - {{note.created_at}}</div>
+                    <div>Updated At - {{note.updated_at}}</div>
                   </div>
                                    
                 </div>

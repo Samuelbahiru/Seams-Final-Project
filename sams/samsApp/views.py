@@ -126,19 +126,9 @@ def student_attendance_detail(request, stud_id, course_id):
 
 @login_required()
 def student_notification(request, student_id):
-    stud = Student.objects.get(USN=student_id)
-    ass_list = Assign.objects.filter(class_id_id=stud.class_id)
-    att_list = []
-    for ass in ass_list:
-        try:
-            a = StudentNotification.objects.get(student=stud, course=ass.course )
-        except StudentNotification.DoesNotExist:
-            a = StudentNotification(student=stud, course=ass.course)
-            a.save()
-        att_list.append(a)
-    number_of_notification = len(ass_list);  
-    return render(request, 'student_notification.html', {'studentNote':att_list, 'count': number_of_notification,})
- 
+    studentNote = StudentNotification.objects.filter(student=student_id)
+    studentNote_count = len(studentNote)
+    return render(request, 'student_notification.html', {'studentNote':studentNote, 'studentNote_count':studentNote_count})
 
 
 # Teacher Views
@@ -233,7 +223,8 @@ def confirm(request, ass_c_id):
 
 @login_required()
 def t_notification(request, teacher_id):
-    note = TeacherNotification.objects.filter(teacher_id=teacher_id)
-    return render(request, 'teacher_notification.html', {'note':note})
+    teacherNote = TeacherNotification.objects.filter(teacher=teacher_id)
+    teacherNote_count = len(teacherNote)
+    return render(request, 'teacher_notification.html', {'teacherNote':teacherNote, 'teacherNote_count':teacherNote_count})
     
 
