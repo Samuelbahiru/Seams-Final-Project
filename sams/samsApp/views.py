@@ -89,7 +89,7 @@ def change_password(request):
             user = form.save()
             update_session_auth_hash(request, user) 
             messages.success(request, 'Your password was successfully updated!')
-            return redirect('home_url')  
+            return redirect('login_url')  
         else:
             messages.error(request, 'Please correct the error below.')
     else:
@@ -136,7 +136,8 @@ def student_notification(request, student_id):
             a = StudentNotification(student=stud, course=ass.course)
             a.save()
         att_list.append(a)
-    return render(request, 'student_notification.html', {'studentNote':att_list})
+    number_of_notification = len(ass_list);  
+    return render(request, 'student_notification.html', {'studentNote':att_list, 'count': number_of_notification,})
  
 
 

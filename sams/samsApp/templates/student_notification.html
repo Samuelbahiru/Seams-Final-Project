@@ -36,9 +36,9 @@
                 <div class="card-body">
                   <p>
                    <span class="fw-bold "> message - </span> 
-                   {% if messages %}
+                   {% if studentNote %}
                       <ul class="messages">
-                          {% for message in messages %}
+                          {% for message in studentNote %}
                               <li>{{ message }}</li>
                           {% endfor %}
                       </ul>

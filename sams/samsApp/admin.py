@@ -6,7 +6,7 @@ from django.contrib.auth.admin import UserAdmin
 from django.http import HttpResponseRedirect
 from django.urls import path
 
-from .models import Dept, Class, Student, Attendance, Course, Teacher, Assign, AssignTime, AttendanceClass, StudentCourse, User, AttendanceRange,  TeacherNotification, AttendanceTotal
+from .models import Dept, Class, Student, Attendance, Course, Teacher, Assign, AssignTime, AttendanceClass, StudentCourse, User, AttendanceRange,  TeacherNotification, AttendanceTotal, StudentNotification
 
 
 # Register your models here.
@@ -124,3 +124,4 @@ admin.site.register(Teacher)
 admin.site.register(Assign, AssignAdmin)
 admin.site.register(AttendanceRange)
 admin.site.register(AttendanceTotal, AttendanceTotalAdmin)
+admin.site.register(StudentNotification)
