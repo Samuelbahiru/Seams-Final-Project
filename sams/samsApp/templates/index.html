@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Seams Atendance Management System</title>
+  <title>Sams Atendance Management System</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -12,11 +12,15 @@
   <link rel="stylesheet" href="{% static 'vendors/mdi/css/materialdesignicons.min.css' %}">
   <link rel="stylesheet" href="{% static 'vendors/aos/css/aos.css' %}">
   <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+  <link rel="stylesheet" href = "{% static 'css/style.css' %}">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link href="{% static 'images/favicon.png' %}" rel="icon" type="image/x-icon" />
+  <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
 </head>
 <body id="body" data-spy="scroll" data-target=".navbar" data-offset="100">
-  <header id="header-section" >
-    <nav class="navbar navbar-expand-lg pl-3 pl-sm-0" id="navbar">
+  <header id="header-section"  >
+    <nav class="navbar navbar-expand-lg pl-3 pl-sm-0 bg-info" id="navbar">
     <div class="container">
       <div class="navbar-brand-wrapper d-flex w-100">
         <img class="img-responsive rounded-circle"  style="height: 80px; width: 110px;" src="{% static 'images/logo.png' %}" alt="">
@@ -35,16 +39,16 @@
             </button>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#jumb">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link text-light" href="#header-section">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#About">About</a>
+            <a class="nav-link text-light" href="#aboutt">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#service">Service</a>
+            <a class="nav-link text-light" href="#service">Service</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#contact-section">Contact</a>
+            <a class="nav-link text-light" href="#contact-section">Contact</a>
           </li>
           <li class="nav-item btn-contact-us pl-4 pl-lg-0">
            
@@ -60,48 +64,45 @@
     
   </header>
 
-  <div class="banner" id="jumb"  >
-   
-    <div class="container">
-      <h1 class="font-weight-semibold">Seams Atendance Management<br>System.</h1>
+  <div class="banner" data-aos="fade-in" id="jumb"  >
+    <br/>
+    <br/>
+    <div class="container" data-aos="slide-left">
+      <h1 class="font-weight-semibold"><span class="fw-dark text-warning">Sams</span> - Student Atendance Management<br>System.</h1>
       <h6 class="font-weight-normal text-muted pb-3">Commited To Excellence</h6>
       <div>
-       <a href="#About"><button class="btn btn-info mr-1 text-light"> Get to know us </button></a> 
+       <a href="#aboutt"><button class="btn btn-info mr-1 text-light"> Get to know us </button></a> 
         <!-- <button class="btn btn-opacity-success ml-1">Learn more</button> -->
       </div>
-      <img src="{% static 'images/Group171.svg' %}" alt="" class="img-fluid">
+      <img  src="{% static 'images/Group171.svg' %}" alt="" class="img-fluid anim">
     </div>
+    <br><br>
   </div>
   <div class="content-wrapper">
     <div class="container">
       
-      <section class="digital-marketing-service" id="digital-marketing-section">
-        <div class="row align-items-center">
-          <div class="col-12 col-lg-7 grid-margin grid-margin-lg-0" data-aos="fade-right">
-            <h3 class="m-0">We are an enthusiated <br>Computer Science Students!</h3>
+      <section id="aboutt" class="digital-marketing-service" >
+        
+        <div  class="row align-items-center">
+      
+          <div  class="col-12 col-lg-7 grid-margin grid-margin-lg-0" data-aos="fade-right">
+            <h1 class="fw-bold text-warning"> About us</h1>
+            <h3 class="m-0">We are Computer Science Students<br>with big dreams!</h3>
+            <br/>
             <div class="col-lg-7 col-xl-6 p-0">
-              <p class="py-4 m-0 text-muted">We would love to contribute SEAMS atendance management system for our school</p>
-              <p class="font-weight-medium text-muted">we are  .... </p>
+              <p class="py-4 m-0 text-muted text-center" style="text-align: justify;">we are 3 computer Science student from ACT American college with a passion to continue our carrer as a programmer and contribute our best skills for Technological Advancement in the industry
+                </p><p class=" text-center text-muted">As our Begining we would love to contribute SAMS - student atendance management system for our school and our final projects/p>
+              <a href="#About"><button class="btn  m-4 p-2 btn-outline-info">Read more</button></a>
             </div>    
           </div>
           <div class="col-12 col-lg-5 p-0 img-digital grid-margin grid-margin-lg-0" data-aos="fade-left">
-            <img src="{% static 'images/Group1.png' %}" alt="" class="img-fluid">
+            <img src="{% static 'images/Group1.png' %}" alt="" class="img-fluid anim">
           </div>
+      
         </div>
-        <!-- <div class="row align-items-center">
-          <div class="col-12 col-lg-7 text-center flex-item grid-margin" data-aos="fade-right">
-            <img src="images/Group2.png" alt="" class="img-fluid">
-          </div>
-          <div class="col-12 col-lg-5 flex-item grid-margin" data-aos="fade-left">
-            <h3 class="m-0">Leading Digital Agency<br>for  Business Solution.</h3>
-            <div class="col-lg-9 col-xl-8 p-0">
-              <p class="py-4 m-0 text-muted">Power-packed with impressive features and well-optimized, this template is designed to provide the best performance in all circumstances.</p>
-              <p class="pb-2 font-weight-medium text-muted">Its smart features make it a powerful stand-alone website building tool.</p>
-            </div>
-            <button class="btn btn-info">Readmore</button>
-          </div>
-        </div> -->
-      </section>   
+      </section> 
+      <br>
+      <br>  
       <section class="customer-feedback" id="About">
         <div class="row">
           <div class="col-12 text-center pb-5">
@@ -112,33 +113,34 @@
               <div class="card customer-cards">
                 <div class="card-body">
                   <div class="text-center">
-                    <img src="{% static 'images/face2.jpg' %}" width="89" height="89" alt="" class="img-customer">
-                    <p class="m-0 py-3 text-muted">Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce egeabus consectetuer turpis, suspendisse.</p>
+                    <img src="{% static 'images/face1.jpg' %}" width="249" height="209" alt="" class="img-customer">
+                    <p class="m-0 py-3 text-muted">Hello, I'm Samuel a Full Stack developer, I have honed my skills in building robust web projects, crafting engaging UI/UX designs, and implementing efficient REST APIs. With a deep understanding of concepts like REST API, unit testing, JavaScript, Bootstrap, SASS, jQuery, and Node.js, I am well-equipped to tackle complex web development challenge, Feel free to address me.</p>
+                 
                     <div class="content-divider m-auto"></div>
-                    <h6 class="card-title pt-3">Tony Martinez</h6>
-                    <h6 class="customer-designation text-muted m-0">Marketing Manager</h6>
+                    <h6 class="card-title pt-3">Full-Stack Web Developer(React & Django expertise)</h6>
+                    <h6 class="customer-designation text-muted m-0"> Samuel Bahiru</h6>
                   </div>
                 </div>
               </div>
               <div class="card customer-cards">
                 <div class="card-body">
                   <div class="text-center">
-                    <img src="{% static 'images/face3.jpg' %}" width="89" height="89" alt="" class="img-customer">
-                    <p class="m-0 py-3 text-muted">Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce egeabus consectetuer turpis, suspendisse.</p>
+                    <img src="{% static 'images/face2.jpg' %}" width="249" height="209" alt="" class="img-customer">
+                    <p class="m-0 py-3 text-muted">Greetings!, I'm a seasoned Full-Stack Web Developer specializing in backend development with Django, With my expertise in building scalable and efficient web applications, I have honed my skills in designing and implementing robust back-end systems. Join me and showcase how my proficiency in backend technologies can elevate your project.</p>
                     <div class="content-divider m-auto"></div>
-                    <h6 class="card-title pt-3">Sophia Armstrong</h6>
-                    <h6 class="customer-designation text-muted m-0">Marketing Manager</h6>
+                    <h6 class="card-title pt-3">Full-Stack Web Developer(Django Backend expertise )</h6>
+                    <h6 class="customer-designation text-muted m-0">Kirubel Esayas</h6>
                   </div>
                 </div>
               </div>
               <div class="card customer-cards">
                 <div class="card-body">
                   <div class="text-center">
-                    <img src="{% static 'images/face20.jpg' %}" width="89" height="89" alt="" class="img-customer">
-                    <p class="m-0 py-3 text-muted">Lorem ipsum dolor sit amet, tincidunt vestibulum. Fusce egeabus consectetuer turpis, suspendisse.</p>
+                    <img src="{% static 'images/face3.jpg' %}" width="249" height="209" alt="" class="img-customer">
+                    <p class="m-0 py-3 text-muted">Hey! I'm Amanuel a skilled business analyst specializing in analysis business requirements and preparing a software solution documentation. I excel in gathering requirements from stakeholders and designing systems that align with their needs. Collaborating closely with software engineers, I produce comprehensive SRS and other technical documents, ensuring successful project outcomes. Contact me.</p>
                     <div class="content-divider m-auto"></div>
-                    <h6 class="card-title pt-3">Cody Lambert</h6>
-                    <h6 class="customer-designation text-muted m-0">Marketing Manager</h6>
+                    <h6 class="card-title pt-3">Business Analyst and Designer</h6>
+                    <h6 class="customer-designation text-muted m-0">Amanuel Tessema </h6>
                   </div>
                 </div>
               </div>
@@ -152,12 +154,12 @@
             <h2>What we Offer in SEAMS</h2>
             <h6 class="section-subtitle text-muted">Services We Offer</h6>
           </div>
-          <div class="col-12 col-md-6 col-lg-3 stretch-card mb-3 mb-lg-0" data-aos="zoom-in">
+          <div class="col-12 col-md-6 col-lg-4 stretch-card mb-3 mb-lg-0" data-aos="zoom-in">
             <div class="card color-cards">
               <div class="card-body p-0">
-                <div class="bg-primary text-center card-contents">
+                <div class="bg-dark text-center card-contents">
                   <div class="card-image">
-                    <img src="{% static 'images/Group95.svg' %}" class="case-studies-card-img" alt="">
+                    <img src="{% static 'images/group1.png' %}" class="img-responsive img-fluid rounded-circle " width="249px" height = "209px" alt="">
                   </div>  
                   <div class="card-desc-box d-flex align-items-center justify-content-around">
                   
@@ -165,17 +167,17 @@
                 </div>   
                 <div class="card-details text-center pt-4">
                     <h6 class="m-0 pb-1">Online Attendance</h6>
-                    <p>Automated attendance table accessable from the web</p>
+                    <p class="text-warning">Automated attendance table accessable from the web</p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-12 col-md-6 col-lg-3 stretch-card mb-3 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
-            <div class="card color-cards">
+          <div class="col-12 col-md-6 col-lg-4 stretch-card mb-3 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
+            <div class="card color-cards " data-aos="slide-left" data-aos-delay="10">
               <div class="card-body p-0">
-                <div class="bg-warning text-center card-contents">
+                <div class="bg-dark text-center card-contents">
                   <div class="card-image">
-                      <img src="{% static 'images/Group108.svg' %}" class="case-studies-card-img" alt="">
+                    <img src="{% static 'images/group2.png' %}" class="img-responsive img-fluid rounded-circle " width="249px" height = "209px" alt="">
                   </div>  
                   <div class="card-desc-box d-flex align-items-center justify-content-around">
                     <!-- <div>
@@ -186,17 +188,17 @@
                 </div>   
                 <div class="card-details text-center pt-4">
                     <h6 class="m-0 pb-1">Admin Page for the Adminstrators</h6>
-                    <p>Monitoring easily</p>
+                    <p class="text-warning" >Monitoring easily from our admin page</p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-12 col-md-6 col-lg-3 stretch-card mb-3 mb-lg-0" data-aos="zoom-in" data-aos-delay="400">
+          <div class="col-12 col-md-6 col-lg-4 stretch-card mb-3 mb-lg-0" data-aos="zoom-in" data-aos-delay="400">
             <div class="card color-cards">
               <div class="card-body p-0">
-                <div class="bg-violet text-center card-contents">
+                <div class="bg-dark text-center card-contents">
                   <div class="card-image">
-                      <img src="{% static 'images/Group126.svg' %}" class="case-studies-card-img" alt="">
+                    <img src="{% static 'images/group3.png' %}" class="img-responsive img-fluid rounded-circle " width="249px" height = "209px" alt="">
                   </div>  
                   <div class="card-desc-box d-flex align-items-center justify-content-around">
                     <!-- <div>
@@ -206,33 +208,13 @@
                   </div>
                 </div>   
                 <div class="card-details text-center pt-4">
-                    <h6 class="m-0 pb-1">Student Attendance Monitoring</h6>
-                    <p>Student monitoring and warning</p>
+                    <h6 class="m-0 pb-1">Student pannel</h6>
+                    <p class="text-warning">Student can view there attendance from our student page</p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-12 col-md-6 col-lg-3 stretch-card" data-aos="zoom-in" data-aos-delay="600">
-            <div class="card color-cards">
-              <div class="card-body p-0">
-                <div class="bg-success text-center card-contents">
-                  <div class="card-image">
-                      <img src="images/Group115.svg" class="case-studies-card-img" alt="">
-                  </div>  
-                  <div class="card-desc-box d-flex align-items-center justify-content-around">
-                    <!-- <div>
-                      <h6 class="text-white pb-2 px-3">Know more about Software Development</h6>
-                      <button class="btn btn-white">Read More</button>
-                    </div> -->
-                  </div>
-                </div>   
-                <div class="card-details text-center pt-4">
-                    <h6 class="m-0 pb-1">Report on Atendance</h6>
-                    <p>Visual Appear </p>
-                </div>
-              </div>
-            </div>
-          </div>
+         
         </div>
       </section>     
       
@@ -240,16 +222,17 @@
         <div class="contact-us-bgimage grid-margin" >
           <div class="pb-4">
             <h4 class="px-3 px-md-0 m-0" data-aos="fade-down">Do you have any projects?</h4>
-            <h4 class="pt-1" data-aos="fade-down">Contact us</h4>
+            <h4 class="pt-1" data-aos="fade-down">Feel Free to Contact us</h4>
           </div>
-          <div data-aos="fade-up">
-            <button class="btn btn-rounded btn-outline-light text-dark">Contact us</button>
+          <div data-aos="fade-up" class="d-flex align-items-center justify-content-center">
+            <h4> <i class="fa fa-phone text-info tw-dark mx-2 " aria-hidden="true"></i></h4>
+             <p class="fw-bold mx-2"> +251 902480915</p>
           </div>          
         </div>
       </section>
      
       <footer class="border-top">
-        <p class="text-center text-muted pt-4">Copyright © 2023<a href="https://www.bootstrapdash.com/" class="px-1">Seams</a>All rights reserved.</p>
+        <p class="text-center text-muted pt-4">Copyright © 2023<a href="https://www.bootstrapdash.com/" class="px-1">Sams</a>All rights reserved.</p>
 
        
       </footer>
@@ -260,6 +243,7 @@
   <script src="{% static 'vendors/jquery/jquery.min.js' %}"></script>
   <script src="{% static 'vendors/bootstrap/bootstrap.min.js' %}"></script>
   <script src="{% static 'vendors/owl-carousel/js/owl.carousel.min.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   <script src="{% static 'vendors/aos/js/aos.js' %}"></script>
   <script src="{% static 'js/landingpage.js' %}"></script>
 </body>

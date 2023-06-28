@@ -68,6 +68,20 @@ body {
   outline: 0 !important;
 }
 
+
+@keyframes rotation {
+  from {
+    transform: rotate(-5deg);
+  }
+  to{
+    transform: rotate(5deg);
+  }
+ 
+}
+.anim {
+  animation: 4s linear infinite rotation;
+  animation-timing-function: linear;
+}
 hr {
   box-sizing: content-box;
   height: 0;
@@ -2429,7 +2443,7 @@ fieldset:disabled a.btn {
 
 .btn-light {
   color: #212529;
-  background-color: #fc7341;
+  background-color: #ffffff;
   border-color: #fc7341;
 }
 
@@ -6150,7 +6164,7 @@ button.bg-primary:focus {
 a.bg-secondary:hover, a.bg-secondary:focus,
 button.bg-secondary:hover,
 button.bg-secondary:focus {
-  background-color: #9090ea !important;
+  background-color: #ccc !important;
 }
 
 .bg-success {
@@ -9631,11 +9645,11 @@ body.sidebar-open::before {
 }
 
 .case-studies .color-cards:hover .card-details {
-  color: rgba(0, 51, 204, 0.8);
+  color: #ccc;
 }
 
 .case-studies .color-cards:hover .card-details p {
-  color: rgba(0, 51, 204, 0.8);
+  color: #ccc;
 }
 
 .case-studies .color-cards:hover .card-desc-box {
