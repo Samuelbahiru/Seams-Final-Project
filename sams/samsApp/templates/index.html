@@ -18,7 +18,7 @@
   <link href="{% static 'images/favicon.png' %}" rel="icon" type="image/x-icon" />
   <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
 </head>
-<body id="body" data-spy="scroll" data-target=".navbar" data-offset="100" style="overflow-x: hidden;">
+<body id="body" data-spy="hidden" data-target=".navbar" data-offset="100" style="overflow-x: hidden;">
   <header id="header-section"  >
     <nav class="navbar navbar-expand-lg pl-3 pl-sm-0 bg-info" id="navbar">
     <div class="container">
@@ -50,10 +50,10 @@
           <li class="nav-item btn-contact-us pl-4 pl-lg-0">
            
           </li>
-          <li class="nav-item btn-contact-us pl-4 pl-lg-0">
-            <a href = "{% url 'register_url' %}"> <button class="btn btn-outline-warning text-dark" style="border-radius: 20px; margin: 10px; " data-toggle="modal" data-target="#exampleModal"> Signup</button></a>
-            <a href = "{% url 'login_url' %}"> <button class="btn btn-info text-light" style="border-radius: 10px" data-toggle="modal" data-target="#exampleModal"> Login</button></a>
-            <a href = "http://127.0.0.1:8000/admin/"> <button class="btn btn-outline-danger text-light mx-1" style="border-radius: 10px" data-toggle="modal" data-target="#exampleModal"> Admin</button></a> 
+          <li class="nav-item btn-contact-us pl-4 pl-lg-0 ">
+            <a href = "{% url 'register_url' %}"> <button class="btn btn-outline-warning text-dark " style="border-radius: 20px; " data-toggle="modal" data-target="#exampleModal"> Signup</button></a>
+            <a href = "{% url 'login_url' %}"> <button class="btn btn-outline-warning text-dark" style="border-radius: 20px" data-toggle="modal" data-target="#exampleModal"> Login</button></a>
+            <a  target="_blank" href = "http://127.0.0.1:8000/admin/"> <button class="btn btn-outline-info  text-danger mx-1" style="border-radius: 10px" data-toggle="modal" data-target="#exampleModal"> Admin</button></a> 
           </li>
         </ul>
       </div>
@@ -72,7 +72,8 @@
        <a href="#aboutt"><button class="btn btn-info mr-1 text-light"> Get to know us </button></a> 
         <!-- <button class="btn btn-opacity-success ml-1">Learn more</button> -->
       </div>
-      <img  src="{% static 'images/Group171.svg' %}" alt="" class="img-fluid anim">
+      <br>
+      <img  src="{% static 'images/Group171.svg' %}" alt="" class="img-fluid anim ">
     </div>
     <br><br>
   </div>
@@ -94,7 +95,7 @@
             </div>    
           </div>
           <div class="col-12 col-lg-5 p-0 img-digital grid-margin grid-margin-lg-0" data-aos="fade-left">
-            <img src="{% static 'images/Group171.svg' %}" alt="" class="img-fluid anim">
+            <img src="{% static 'images/Group171.svg' %}" alt="" class="img-fluid anim shadow-lg">
           </div>
       
         </div>
@@ -108,7 +109,7 @@
             <h6 class="section-subtitle text-muted m-0">We are 3 Computer Science student with big dreams </h6>
           </div>
           <div class="owl-carousel owl-theme grid-margin">
-              <div class="card customer-cards">
+              <div class="card customer-cards shadow">
                 <div class="card-body">
                   <div class="text-center">
                     <img src="{% static 'images/face1.jpg' %}" width="189" height="140" alt="" class="img-customer">
@@ -120,7 +121,7 @@
                   </div>
                 </div>
               </div>
-              <div class="card customer-cards">
+              <div class="card customer-cards shadow">
                 <div class="card-body">
                   <div class="text-center">
                     <img src="{% static 'images/face2.jpg' %}" width="189" height="140" alt="" class="img-customer">
@@ -131,7 +132,7 @@
                   </div>
                 </div>
               </div>
-              <div class="card customer-cards">
+              <div class="card customer-cards shadow">
                 <div class="card-body">
                   <div class="text-center">
                     <img src="{% static 'images/face3.jpg' %}" width="189" height="140" alt="" class="img-customer">
