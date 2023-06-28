@@ -18,7 +18,7 @@
   <link href="{% static 'images/favicon.png' %}" rel="icon" type="image/x-icon" />
   <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
 </head>
-<body id="body" data-spy="scroll" data-target=".navbar" data-offset="100">
+<body id="body" data-spy="scroll" data-target=".navbar" data-offset="100" style="overflow-x: hidden;">
   <header id="header-section"  >
     <nav class="navbar navbar-expand-lg pl-3 pl-sm-0 bg-info" id="navbar">
     <div class="container">
@@ -31,9 +31,6 @@
       <div class="collapse navbar-collapse navbar-menu-wrapper" id="navbarSupportedContent">
         <ul class="navbar-nav align-items-lg-center align-items-start ml-auto">
           <li class="d-flex align-items-center justify-content-between pl-4 pl-lg-0">
-            <div class="navbar-collapse-logo">
-              <img src="{% static 'images/Group2.svg' %}" alt="">
-            </div>
             <button class="navbar-toggler close-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="mdi mdi-close navbar-toggler-icon pl-5"></span>
             </button>
@@ -56,6 +53,7 @@
           <li class="nav-item btn-contact-us pl-4 pl-lg-0">
             <a href = "{% url 'register_url' %}"> <button class="btn btn-outline-warning text-dark" style="border-radius: 20px; margin: 10px; " data-toggle="modal" data-target="#exampleModal"> Signup</button></a>
             <a href = "{% url 'login_url' %}"> <button class="btn btn-info text-light" style="border-radius: 10px" data-toggle="modal" data-target="#exampleModal"> Login</button></a>
+            <a href = "{% url 'admin_url' %}"> <button class="btn btn-outline-dark text-light mx-1" style="border-radius: 10px" data-toggle="modal" data-target="#exampleModal"> Admin</button></a>
           </li>
         </ul>
       </div>
@@ -113,7 +111,7 @@
               <div class="card customer-cards">
                 <div class="card-body">
                   <div class="text-center">
-                    <img src="{% static 'images/face1.jpg' %}" width="249" height="209" alt="" class="img-customer">
+                    <img src="{% static 'images/face1.jpg' %}" width="189" height="140" alt="" class="img-customer">
                     <p class="m-0 py-3 text-muted">Hello, I'm Samuel a Full Stack developer, I have honed my skills in building robust web projects, crafting engaging UI/UX designs, and implementing efficient REST APIs. With a deep understanding of concepts like REST API, unit testing, JavaScript, Bootstrap, SASS, jQuery, and Node.js, I am well-equipped to tackle complex web development challenge, Feel free to address me.</p>
                  
                     <div class="content-divider m-auto"></div>
@@ -125,7 +123,7 @@
               <div class="card customer-cards">
                 <div class="card-body">
                   <div class="text-center">
-                    <img src="{% static 'images/face2.jpg' %}" width="249" height="209" alt="" class="img-customer">
+                    <img src="{% static 'images/face2.jpg' %}" width="189" height="140" alt="" class="img-customer">
                     <p class="m-0 py-3 text-muted">Greetings!, I'm a seasoned Full-Stack Web Developer specializing in backend development with Django, With my expertise in building scalable and efficient web applications, I have honed my skills in designing and implementing robust back-end systems. Join me and showcase how my proficiency in backend technologies can elevate your project.</p>
                     <div class="content-divider m-auto"></div>
                     <h6 class="card-title pt-3">Full-Stack Web Developer(Django Backend expertise )</h6>
@@ -136,7 +134,7 @@
               <div class="card customer-cards">
                 <div class="card-body">
                   <div class="text-center">
-                    <img src="{% static 'images/face3.jpg' %}" width="249" height="209" alt="" class="img-customer">
+                    <img src="{% static 'images/face3.jpg' %}" width="189" height="140" alt="" class="img-customer">
                     <p class="m-0 py-3 text-muted">Hey! I'm Amanuel a skilled business analyst specializing in analysis business requirements and preparing a software solution documentation. I excel in gathering requirements from stakeholders and designing systems that align with their needs. Collaborating closely with software engineers, I produce comprehensive SRS and other technical documents, ensuring successful project outcomes. Contact me.</p>
                     <div class="content-divider m-auto"></div>
                     <h6 class="card-title pt-3">Business Analyst and Designer</h6>

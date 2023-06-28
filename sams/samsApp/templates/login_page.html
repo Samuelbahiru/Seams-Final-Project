@@ -1,13 +1,28 @@
 {% extends 'logBase.html' %}
 {% load static %}
 {% block content%}
-<div class="container" style="margin-top: -60px;">
+<style>
+    @keyframes rotation {
+  from {
+    transform: rotate(-5deg);
+  }
+  to{
+    transform: rotate(5deg);
+  }
+ 
+}
+.anim {
+  animation: 4s linear infinite rotation;
+  animation-timing-function: linear;
+}
+</style>
+<div class="container" style="overflow-x:hidden;" >
     <div class="row">
-        <div class="col-sm-5 m-2">
+        <div class="col-sm-5 my-5 anim">
             <img src="{% static 'images/Group171.svg' %}" alt="" class="img-fluid ">
 
         </div>
-        <div class="col-sm-6 mx-4">
+        <div class="col-sm-6 mx-2">
             <div class="card shadow-lg border-0 rounded-lg mt-5">
 
                 <div class="card-header bg-info text-white"><h3 class="text-center font-weight-light my-4">Login</h3></div>
