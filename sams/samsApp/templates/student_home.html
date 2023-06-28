@@ -11,6 +11,7 @@
   <div class="container-fluid" style="margin-top: -60px;">
           <div class="row my-3">
             <div class="col d-flex justify-content-end">
+              <div class="align-self-center"><a class="btn btn-outline-info" role="button" href="{% url 'change_password' %}">Change password</a></div>
               <div class="align-self-center mx-3 text-danger">Change your profile</div>
               <a href="{% url 'avatar_change' %}">{% avatar user 65 class="rounded-circle" id="user_avatar" %}
               </a>

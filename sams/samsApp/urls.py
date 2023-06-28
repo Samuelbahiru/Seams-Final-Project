@@ -1,11 +1,17 @@
 from django.urls import path
 from . import views
-from django.contrib.auth import views as auth_views
+from .views import (
+    CustomPasswordResetView,
+    CustomPasswordResetDoneView,
+    CustomPasswordResetConfirmView,
+    CustomPasswordResetCompleteView
+)
+
 
 
 urlpatterns = [
     path('', views.home_view, name = "home_url"),
-    path('login/', views.login_view, name='login_url'),
+    path('accounts/login/', views.login_view, name='login_url'),
     path('logout/',views.logoutview, name='logout_url'),
 
     path('register/',views.register_view, name='register_url'), 
@@ -27,9 +33,10 @@ urlpatterns = [
     path('teacher/<slug:teacher_id>/notification', views.t_notification, name='t_notification_url'),
      
    
-    path('reset_password/', auth_views.PasswordResetView.as_view(template_name='accounts/password_reset.html'), name='reset_password'),
-    path('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(template_name='accounts/password_reset_sent.html'), name='password_reset_done'),
-    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='accounts/password_reset_form.html'), name='password_reset_confirm'),
-    path('reset_password_complete/', auth_views.PasswordResetView.as_view(template_name='accounts/password_reset_complete_.html'), name='password_reset_complete'),     
-
+    path('password_reset/', CustomPasswordResetView.as_view(), name='password_reset'),
+    path('password_reset/done/', CustomPasswordResetDoneView.as_view(), name='password_reset_done'),
+    path('reset/<uidb64>/<token>/', CustomPasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    path('reset/done/', CustomPasswordResetCompleteView.as_view(), name='password_reset_complete'),
+    
+    path('change-password/', views.change_password, name='change_password'),
 ]

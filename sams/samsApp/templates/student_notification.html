@@ -30,29 +30,27 @@
                 Notification</h3>
             </div>
         
-              <div class="card-body">
-                {% for note in studentNote %}
-                <div class="card col-5">
-                  <h5 class=" h6 card-header text-center bg-warning text-dark fw-bold">Notification- {{note.id}}</h5>
-                  <div class="card-body">
-                    <p>
-                     <span class="fw-bold "> message - </span>  {{note.message}}
-                    </p>
-                    <!-- <p>
-                      To - {{request.user.name}}
-                    </p> -->
-                  </div>
-                  
-                  <div class="card-footer text-muted">
-                    <div>  <span class="fw-bold "> Created At -  </span>{{noteTeacher.created_at}}</div>
-                    <div>  <span class="fw-bold "> Updated At - </span> {{noteTeacher.updated_at}}</div>
-                  </div>
-                                   
+            <div class="card-body">
+              <div class="card col-5">
+                <h5 class=" h6 card-header text-center bg-warning text-dark fw-bold">Notification </h5>
+                <div class="card-body">
+                  <p>
+                   <span class="fw-bold "> message - </span> 
+                   {% if messages %}
+                      <ul class="messages">
+                          {% for message in messages %}
+                              <li>{{ message }}</li>
+                          {% endfor %}
+                      </ul>
+                  {% endif %}
+                  </p>
                 </div>
-                {% endfor %}
-
-
+                
+                <div class="card-footer text-muted">
+  
+                </div>      
               </div>
+            </div>
           </div>
         </div> 
     </div>

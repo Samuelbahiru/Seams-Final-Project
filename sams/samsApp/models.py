@@ -2,7 +2,7 @@ from django.db import models
 import math
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
-from django.db.models.signals import post_save, post_delete
+from django.db.models.signals import post_save
 from datetime import timedelta
 from django.dispatch import receiver
 from django.utils.translation import gettext_lazy as _
@@ -119,6 +119,7 @@ class Student(models.Model):
     USN = models.CharField(primary_key='True', max_length=100)
     gender = models.CharField(max_length=50, choices=gender_choice)
     date_of_birth = models.DateField(null=True)
+    batch = models.CharField(max_length=50, default='B1')
 
     def __str__(self):
         return self.USN
@@ -294,3 +295,32 @@ class NotificationTeacher(models.Model):
         return str(self.teacher_id)
 
 
+class StudentNotification(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    @property
+    def notify_students(self):
+        stud = Student.objects.get(USN=self.student)
+        cr = Course.objects.get(name=self.course)
+        total_class = Attendance.objects.filter(course=cr, student=stud).count()
+        att_class = Attendance.objects.filter(course=cr, student=stud, status='True').count()
+        attendance_percentage = (att_class / total_class) * 100
+        if attendance_percentage < 75:
+            message = f"Dear {self.student.user.first_name}, you have missed more than {25}% of the classes. Please ensure better attendance."
+        return message
+    
+    def __str__(self):
+        return str(self.student_id)
+
+class TeacherNotification(models.Model):
+    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return str(self.teacher_id)
