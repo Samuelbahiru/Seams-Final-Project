@@ -100,7 +100,13 @@ def change_password(request):
 
 @login_required()
 def student_view(request):
-    return render(request, 'student_home.html')
+    student_note = StudentNotification.objects.filter(student = request.user.student.USN)
+    student_note_count = len(student_note)
+    if student_note_count > 0:
+        newnote ="new" 
+        return render(request, 'student_home.html', {"note":newnote})
+    else:
+        return render(request, 'student_home_html')
 
 @login_required()
 def student_attendance(request, stud_id):
@@ -128,14 +134,21 @@ def student_attendance_detail(request, stud_id, course_id):
 def student_notification(request, student_id):
     studentNote = StudentNotification.objects.filter(student=student_id)
     studentNote_count = len(studentNote)
-    return render(request, 'student_notification.html', {'studentNote':studentNote, 'studentNote_count':studentNote_count})
+    return render(request, 'student_notification.html', {'studentNote':studentNote, 'count':studentNote_count })
+    
 
 
 # Teacher Views
 
 @login_required()
 def teacher_view(request):
-    return render(request, 'teacher_home.html')
+    teacher_note = TeacherNotification.objects.filter(teacher = request.user.teacher)
+    teacher_note_count = len(teacher_note)
+    if teacher_note_count > 0:
+        newnote ="new" 
+        return render(request, 'teacher_home.html', {"note":newnote})
+    else:
+        return render(request, 'teacher_home_html')
 
 @login_required
 def t_clas(request, teacher_id):
@@ -225,6 +238,6 @@ def confirm(request, ass_c_id):
 def t_notification(request, teacher_id):
     teacherNote = TeacherNotification.objects.filter(teacher=teacher_id)
     teacherNote_count = len(teacherNote)
-    return render(request, 'teacher_notification.html', {'teacherNote':teacherNote, 'teacherNote_count':teacherNote_count})
+    return render(request, 'teacher_notification.html', {'teacherNote':teacherNote, 'count':teacherNote_count})
     
 

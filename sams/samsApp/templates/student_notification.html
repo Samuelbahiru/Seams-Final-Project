@@ -3,8 +3,51 @@
 {% load avatar_tags %}
 
 {% include "header.html" %}
-{% include "student_header.html" %}
 
+<head>
+  <title>Sams Atendance Management System</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="{% static 'images/favicon.png' %}" rel="icon" type="image/x-icon" />
+</head>
+<body class="bg-light">
+  <header id="header-section">
+   
+    <nav class="navbar navbar-expand-lg pl-3 pl-sm-0" id="navbar">
+        <div class="container">
+          <div class="navbar-brand-wrapper d-flex mx-3 my-0" >
+            <img class="img-responsive h-25 rounded-circle " style="width: 160px;" src="{% static 'images/logo.png' %}" alt="">
+           
+          </div>
+          <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse mx-5" id="navbarNavDropdown" >
+            <ul class="navbar-nav d-flex">
+              <li class="nav-item mx-1">
+                <a class="active nav-link fw-bold text-danger " aria-current="page" href="{% url 'student_home_url' %}">Home</a>
+              </li>
+              <li class="nav-item mx-3">
+                <a class="nav-link fw-bold" href="{% url 'student_attendance_url' request.user.student.USN %}">Attendance</a>
+              </li>
+              <li class="nav-item mx-1 d-flex">
+                <a class="nav-link fw-bold" href="{% url 'student_notification_url' request.user.student.USN %}">Notification</a>
+                <span id="count" class="text-light btn btn-danger rounded-circle" >{{count}}</span>
+              </li>
+              <li class="nav-item mx-1"></li>
+              <div class="col-lg-2  col-sm-3  align-self-center text-white mx-5"  >
+                <a class="nav-link   btn btn-md btn-outline-warning  "  href="{% url 'logout_url' %}">Sign out
+                </a>
+            </div>
+         
+          </ul>
+        </div>
+
+
+        </div> 
+    </nav>   
+  
+  </header>
 <div class="container-fluid">
   
 
@@ -23,37 +66,64 @@
 
   <div class="container-fluid">
     <div class="row g-5">
-        <div class="col-12">
+        <div class="col-12 ">
           <div class="card shadow-lg">
-              <h5 class="card-header">Notification</h5>
+              <h5 class="card-header text-light text-center text-uppercase bg-info">Notification
+             
+              </h5>
               <div class="card-body">
                 {% for note in studentNote %}
-                <div class="card col-5">
-                  <h5 class="card-header">Notification- {{note.id}}</h5>
+                <div class="card col-5 my-2">
+                  <h5 class="card-header bg-info text-light">Notification - {{note.id}}</h5>
+                  <p class="text-dark fw-bold  text-center bg-light">
+                    <span class="text-danger ">To</span> - {{request.user.first_name}} {{request.user.last_name}}
+                  </p>
                   <div class="card-body">
                     <p>
-                      message - {{note.message}}
+                      <span class="fw-bold">message </span> - {{note.message}}
                     </p>
-                    <p>
-                      To - {{request.user.first_name}}
-                    </p>
+                    <button id="mark" class="btn btn-outline-info">Mark as read</button>
+                  
                   </div>
                   
-                  <div class="card-footer text-muted">
-                    <div>Created At - {{note.created_at}}</div>
-                    <div>Updated At - {{note.updated_at}}</div>
+                  <div class="card-footer text-muted  ">
+                    <div class="text-danger">Created At - {{note.created_at}}</div>
+                    <div class="text-danger">Updated At - {{note.updated_at}}</div>
                   </div>
                 </div>
                 {% endfor %}
               </div>
           </div>
+      
         </div> 
+        
     </div>
 
 </div> 
 </main> 
 </div>
 </div>
-      
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+
+      var button = document.getElementById('mark');
+      button.addEventListener('click', function(event) {
+          event.preventDefault();
+        
+          count = document.getElementById('count')
+          var countElement = document.getElementById('count');
+          var count = parseInt(countElement.textContent);
+
+         if(count > 0){
+          count -= 1;
+         }
+          
+
+          // Update the count value in the DOM
+          countElement.textContent = count.toString();
+      });
+  });
+</script>
+
 
 {% include "footer.html" %}

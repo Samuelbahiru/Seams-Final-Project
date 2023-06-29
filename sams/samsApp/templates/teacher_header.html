@@ -10,7 +10,7 @@
   <nav class="navbar navbar-expand-lg pl-3 pl-sm-0" id="navbar">
     <div class="container">
       <div class="navbar-brand-wrapper d-flex mx-5">
-        <img src="{% static 'images/logo.png' %}"  style="height: 120px; width: 140px;" alt="">
+        <img src="{% static 'images/logo.png' %}" class="rounded-circle"  style="height: 120px; width: 140px;" alt="">
        
       </div>
       <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,8 +24,9 @@
           <li class="nav-item mx-3">
             <a class="nav-link fw-bold" href="{% url 't_clas_url' request.user.teacher.id %}">Attendance</a>
           </li>
-          <li class="nav-item mx-3">
+          <li class="nav-item mx-3 d-flex">
             <a class="nav-link fw-bold" href="{% url 't_notification_url' request.user.teacher.id %}">Notification</a>
+            <span class="text-light btn btn-danger rounded-circle" >new</span>
           </li>
           <div class="col-lg-2  col-sm-3  align-self-center text-white mx-5"  >
             <a class="nav-link   btn btn-md btn-outline-warning  "  href="{% url 'logout_url' %}">Sign out
