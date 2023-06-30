@@ -8,7 +8,7 @@
 {% if request.user.is_student%}
 {% include "student_header.html" %}
 
-  <div class="container-fluid" style="margin-top: -10px;">
+  <div class="container-fluid pb-4" style="margin-top: -10px;">
           <div class="row my-3">
             <div class="col d-flex justify-content-end">
               <div class="align-self-center"><a class="btn btn-info text-light " role="button" href="{% url 'student_change_password' %}">Change password</a></div>
@@ -49,7 +49,6 @@
   <p>You're not allowed  in this page - <a href={% url 'login_url' %}>login</a>?</p>
   {% endif %}
   {% else %}
-  <p>You're already logged in. Would you like to <a href={% url login_url %}>login</a>?</p>
+  <p>You're already logged out. Would you like to <a href={% url login_url %}>login</a>?</p>
   {% endif %}
-
 {% include "footer.html" %}
