@@ -120,7 +120,7 @@ def student_view(request):
         newnote ="new" 
         return render(request, 'student_home.html', {"note":newnote})
     else:
-        return render(request, 'student_home_html')
+        return render(request, 'student_home.html')
 
 @login_required()
 def student_attendance(request, stud_id):
