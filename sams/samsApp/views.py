@@ -80,9 +80,8 @@ def register_view(request):
     context = {'form':form, 'message': messages}
     return render(request, 'registration.html', context)
 
-
 @login_required()
-def change_password(request):
+def teacher_change_password(request):
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
         if form.is_valid():
@@ -94,7 +93,22 @@ def change_password(request):
             messages.error(request, 'Please correct the error below.')
     else:
         form = PasswordChangeForm(request.user)
-    return render(request, 'change_password.html', {'form': form})
+    return render(request, 'teacher_change_password.html', {'form': form})
+
+@login_required()
+def student_change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user) 
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('login_url')  
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'student_change_password.html', {'form': form})
 
 # student view
 
@@ -148,7 +162,7 @@ def teacher_view(request):
         newnote ="new" 
         return render(request, 'teacher_home.html', {"note":newnote})
     else:
-        return render(request, 'teacher_home_html')
+        return render(request, 'teacher_home.html')
 
 @login_required
 def t_clas(request, teacher_id):
